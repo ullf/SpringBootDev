@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h1>Companies: </h1>
+<table>
+    <tr th:each="comp : ${company}">
+        <td th:text="${comp.id}" ></td>
+        <td th:text="${comp.companyName}" ></td>
+        <td th:text="${comp.description}" ></td>
+        <td th:text="${comp.phoneNumber}" ></td>
+        <td th:text="${comp.address}" ></td>
+    </tr>
+</table>
+
+<h2>Delete company</h2>
+<form action="#" th:action="@{/companydelete}" th:object="${companies}" method="post">
+    <p>Id: <input type="number" th:field="*{id}" /></p>
+    <input type="submit" value="delete" />
+</form>
+
+<h2>Add company</h2>
+<form action="#" th:action="@{/companyadd}" th:object="${companies}" method="post">
+    <p>Id: <input type="number" th:field="*{id}" /></p>
+    <p>Company name: <input type="text" th:field="*{companyName}" /></p>
+    <p>Description: <input type="text" th:field="*{description}" /></p>
+    <p>Address: <input type="text" th:field="*{address}" /></p>
+    <p>Phone number: <input type="number" th:field="*{phoneNumber}" /></p>
+    <input type="submit" value="add" />
+</form>
+
+<h2>Update company</h2>
+<form action="#" th:action="@{/companyupdate}" th:object="${companies}" method="post">
+    <p>Id: <input type="number" th:field="*{id}" /></p>
+    <p>Company name: <input type="text" th:field="*{companyName}" /></p>
+    <p>Description: <input type="text" th:field="*{description}" /></p>
+    <p>Address: <input type="text" th:field="*{address}" /></p>
+    <p>Phone number: <input type="number" th:field="*{phoneNumber}" /></p>
+    <input type="submit" value="update" />
+</form>
+
+</body>
+</html>

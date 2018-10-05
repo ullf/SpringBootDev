@@ -1,4 +1,4 @@
-package ru.marksblog.springbootdev;
+package ru.marksblog;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
