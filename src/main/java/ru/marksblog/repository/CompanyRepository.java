@@ -1,6 +1,7 @@
 package ru.marksblog.repository;
 
 import org.springframework.stereotype.Repository;
+import ru.marksblog.Companyw;
 import ru.marksblog.entity.Company;
 
 import java.util.HashMap;
@@ -26,6 +27,13 @@ public class CompanyRepository {
 
     public void deleteById(int id){
         list.remove(id);
+    }
+
+    public Companyw getById(int id) {
+        Companyw companyw=new Companyw();
+        companyw.setId(1);
+        companyw.setName("Oracle");
+        return companyw;
     }
 
     public void update(int id,String companyName,String description,String address,int phoneNumber){
