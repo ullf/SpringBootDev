@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h2>Add company</h2>
+<form action="#" th:action="@{/companyadd}" th:object="${companies}" method="post">
+    <p>Company name: <input type="text" th:field="*{companyName}" /></p>
+    <p>Description: <input type="text" th:field="*{description}" /></p>
+    <p>Address: <input type="text" th:field="*{address}" /></p>
+    <p>Phone number: <input type="number" th:field="*{phoneNumber}" /></p>
+    <input type="submit" value="add" />
+</form>
+</body>
+</html>

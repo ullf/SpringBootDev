@@ -9,27 +9,16 @@
         <td th:text="${comp.description}" ></td>
         <td th:text="${comp.phoneNumber}" ></td>
         <td th:text="${comp.address}" ></td>
+        <td><a th:href="@{'/companydelete?id='+${comp.id}}">delete</a></td>
     </tr>
 </table>
-
-<h2>Delete company</h2>
-<form action="#" th:action="@{/companydelete}" th:object="${companies}" method="post">
-    <p>Id: <input type="number" th:field="*{id}" /></p>
-    <input type="submit" value="delete" />
-</form>
-
-<h2>Add company</h2>
-<form action="#" th:action="@{/companyadd}" th:object="${companies}" method="post">
-    <p>Id: <input type="number" th:field="*{id}" /></p>
-    <p>Company name: <input type="text" th:field="*{companyName}" /></p>
-    <p>Description: <input type="text" th:field="*{description}" /></p>
-    <p>Address: <input type="text" th:field="*{address}" /></p>
-    <p>Phone number: <input type="number" th:field="*{phoneNumber}" /></p>
-    <input type="submit" value="add" />
-</form>
+<a th:href="@{/company-add}">New company</a>
 
 <h2>Update company</h2>
 <form action="#" th:action="@{/companyupdate}" th:object="${companies}" method="post">
+    Id: <select th:field="${company}">
+            <option th:each="i : ${company}" th:value="${i.id}" th:text="${i.id}"></option>
+        </select>
     <p>Id: <input type="number" th:field="*{id}" /></p>
     <p>Company name: <input type="text" th:field="*{companyName}" /></p>
     <p>Description: <input type="text" th:field="*{description}" /></p>

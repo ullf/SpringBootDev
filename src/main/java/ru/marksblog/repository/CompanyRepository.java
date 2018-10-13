@@ -1,36 +1,43 @@
 package ru.marksblog.repository;
 
 import org.springframework.stereotype.Repository;
+import ru.marksblog.Companyw;
 import ru.marksblog.entity.Company;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @Repository
 public class CompanyRepository {
 
-    private List<Company> list=new ArrayList<>();
+    private int id=1;
+    private Map<Integer,Company> list=new HashMap<>();
 
     public void persist(Company obj){
         if(obj != null){
-            list.add(obj);
+            obj.setId(id);
+            list.put(id,obj);
+            id++;
         }
     }
 
-    public List<Company> findAll() {
+    public Map<Integer,Company> findAll() {
         return list;
     }
 
     public void deleteById(int id){
-        for(Company company:list){
-            if(company.getId() == id){
-                list.remove(company);
-            }
-        }
+        list.remove(id);
+    }
+
+    public Companyw getById(int id) {
+        Companyw companyw=new Companyw();
+        companyw.setId(1);
+        companyw.setName("Oracle");
+        return companyw;
     }
 
     public void update(int id,String companyName,String description,String address,int phoneNumber){
-        for(Company company:list){
+        for(Company company:list.values()){
             if(company.getId() == id){
                 company.setCompanyName(companyName);
                 company.setDescription(description);
