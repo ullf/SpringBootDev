@@ -19,7 +19,7 @@ public class CompanyController {
     @GetMapping("/company")
     public String company(Model model, Company company) {
         model.addAttribute("companies", company);
-        model.addAttribute("company", companyService.findAll().values());
+        model.addAttribute("company", companyService.findAll());
         return "company";
     }
 
@@ -43,7 +43,7 @@ public class CompanyController {
 
     @PostMapping("/companyupdate")
     public String updateCompany(Company company) {
-        companyService.update(company.getId(), company.getCompanyName(), company.getDescription(), company.getAddress(), company.getPhoneNumber());
+        companyService.persist(company);
         return "redirect:/company";
     }
 }

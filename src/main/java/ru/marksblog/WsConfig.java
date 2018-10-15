@@ -22,14 +22,14 @@ public class WsConfig  extends WsConfigurerAdapter {
         MessageDispatcherServlet servlet = new MessageDispatcherServlet();
         servlet.setApplicationContext(applicationContext);
         servlet.setTransformWsdlLocations(true);
-        return new ServletRegistrationBean(servlet, "/*");
+        return new ServletRegistrationBean(servlet, "/wsdl/*");
     }
 
-    @Bean(name = "companyw")
+    @Bean(name = "company")
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema countriesSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("companyw");
-        wsdl11Definition.setLocationUri("/");
+        wsdl11Definition.setLocationUri("/wsdl/*");
         wsdl11Definition.setTargetNamespace("http://marksblog.ru");
         wsdl11Definition.setSchema(countriesSchema);
         return wsdl11Definition;
