@@ -28,7 +28,7 @@ public class CompanyController {
         return "company";
     }
 
-    @GetMapping("/gate")
+   @GetMapping("/gate")
     public Company gate(){
         Company company=new Company();
         company.setId(235);
